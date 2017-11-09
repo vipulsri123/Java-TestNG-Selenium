@@ -96,6 +96,8 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", methodName);
+        capabilities.setCapability("username", username);
+        capabilities.setCapability("accesskey", accesskey);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
@@ -103,7 +105,7 @@ public class TestBase  {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-                new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub"),
+                new URL("https://ondemand.saucelabs.com:443/wd/hub"),
                 capabilities));
 
         // set current sessionId
