@@ -2,8 +2,8 @@ package com.yourcompany.Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,10 +23,10 @@ public class DemoBlazePage {
     @FindBy(id = "loginpassword")
     private WebElement pword;
 
-    @FindBy(css = "#loginModal .btn-primary")
+    @FindBy(css = "#logInModal .btn-primary")
     private WebElement buttonSubmit;
 
-    @FindBy(css = "div(aria-labelledby=\"logInModalLabel\"")
+    @FindBy(css = "div(aria-labelledby=\"logInModalLabel\")")
     private WebElement loginForm;
 
 //     @FindBy(id = "your_comments")
@@ -65,12 +65,15 @@ public class DemoBlazePage {
     }
 
     public void Login(String username, String password){
-        driver.switchTo().frame(loginForm);
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.visibilityOf(login));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(login)).click();
+//        login.click();
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(uname)).click();
+
+//        uname.click();
         uname.sendKeys(username);
+        pword.click();
         pword.sendKeys(password);
-        login.click();
+        buttonSubmit.click();
 
 
     }

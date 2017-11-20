@@ -24,7 +24,7 @@ public class LoginTest extends TestBase {
      *
      * @throws InvalidElementStateException
      */
-    private String username = "username";
+    private String username = "llaskin";
     private String password = "password";
 
     @Test(dataProvider = "hardCodedBrowsers")
@@ -59,7 +59,7 @@ public class LoginTest extends TestBase {
         page.Login("BadUsername", "BadPassword");
 
         this.annotate("Verifying invalid login alert and alert text");
-        Assert.assertFalse(isAlertPresent(driver));
+        Assert.assertTrue(isAlertPresent(driver));
         Assert.assertEquals(getAlertText(driver), "User does not exist.");
     }
 
