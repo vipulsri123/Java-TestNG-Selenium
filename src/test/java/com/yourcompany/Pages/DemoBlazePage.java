@@ -39,7 +39,7 @@ public class DemoBlazePage {
 //     private WebElement submitButton;
 
     public WebDriver driver;
-    public static String url = "https://www.demoblaze.com";
+    public static String url = "http://www.demoblaze.com";
 
     public static DemoBlazePage visitPage(WebDriver driver) {
         DemoBlazePage page = new DemoBlazePage(driver);
