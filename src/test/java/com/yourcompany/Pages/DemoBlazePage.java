@@ -26,7 +26,7 @@ public class DemoBlazePage {
     @FindBy(css = "#loginModal .btn-primary")
     private WebElement buttonSubmit;
 
-    @FindBy(css = "div(aria-labelledby=\"logInModalLabel\")")
+    @FindBy(css = "div(aria-labelledby=\"logInModalLabel\"")
     private WebElement loginForm;
 
 //     @FindBy(id = "your_comments")
