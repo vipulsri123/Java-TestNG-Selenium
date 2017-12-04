@@ -1,9 +1,17 @@
 package com.yourcompany.Tests;
 
+import com.yourcompany.Pages.Cart;
+import com.yourcompany.Pages.HTCOnePage;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.rmi.UnexpectedException;
 
 /**
  * Created by llaskin on 11/28/17.
@@ -19,42 +27,43 @@ public class CartTest extends TestBase {
      *
      * @throws InvalidElementStateException
      */
-//    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
-//    public void addHTCtoCart(String browser, String version, String os, Method method)
-//            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
-//
-//        //create webdriver session
-//        this.createDriver(browser, version, os, method.getName());
-//        WebDriver driver = this.getWebDriver();
-//
-//        this.annotate("Visiting HTCOnePage page...");
-//        HTCOnePage page = HTCOnePage.visitPage(driver);
-//
-//        this.annotate("Login In");
-//        page.Login(username, password);
-//
-//        this.annotate("Adding to cart");
-//        page.addToCart();
-//
-//        Assert.assertEquals(getAlertText(driver), "Product Added");
-//
-//    }
-//
-//    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
-//    public void checkEmptyCart(String browser, String version, String os, Method method)
-//            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
-//
-//        //create webdriver session
-//        this.createDriver(browser, version, os, method.getName());
-//        WebDriver driver = this.getWebDriver();
-//
-//        this.annotate("Visiting Cart page...");
-//        Cart.visitCartLogin(username, password);
-//
-//        this.annotate("Verifying cart is empty");
-//        Assert.assertEquals(0, Cart.getCartItemCount());
-//
-//    }
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
+    public void addHTCtoCart(String browser, String version, String os, Method method)
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
+
+        //create webdriver session
+        this.createDriver(browser, version, os, method.getName());
+        WebDriver driver = this.getWebDriver();
+
+        this.annotate("Visiting HTCOnePage page...");
+        HTCOnePage page = HTCOnePage.visitPage(driver);
+
+        this.annotate("Login In");
+        page.Login(username, password);
+
+        this.annotate("Adding to cart");
+        page.addToCart();
+
+        Assert.assertEquals(getAlertText(driver), "Product Added");
+
+    }
+
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
+    public void checkEmptyCart(String browser, String version, String os, Method method)
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
+
+        //create webdriver session
+        this.createDriver(browser, version, os, method.getName());
+        WebDriver driver = this.getWebDriver();
+
+        this.annotate("Visiting Cart page...");
+        Cart page = Cart.visitPage(driver);
+        page.Login(username, password);
+
+        this.annotate("Verifying cart is empty");
+        Assert.assertEquals(0, Cart.getCartItemCount());
+
+    }
 //
 //    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
 //    public void checkFullCartNoWait(String browser, String version, String os, Method method)

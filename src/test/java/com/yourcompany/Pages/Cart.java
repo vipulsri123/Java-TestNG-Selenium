@@ -36,7 +36,7 @@ public class Cart {
     @FindBy(xpath = "//a[contains(getText(), 'Cart']")
     private static WebElement cartLink;
 
-    public static WebDriver driver;
+    public WebDriver driver;
 
     public static String url = "http://www.demoblaze.com/prod.html?idp_=7";
     public static String cartURL = "http://www.demoblaze.com/cart.html";
@@ -49,10 +49,10 @@ public class Cart {
         return page;
     }
 
-    public static Cart visitCartLogin(WebDriver webdriver, String username, String password) {
+    public Cart visitCartLogin(WebDriver webdriver, String username, String password) {
         Cart page = new Cart(webdriver);
         page.visitCart();
-        Login(webdriver, username, password);
+        Login(username, password);
 
 
         return page;
@@ -64,7 +64,7 @@ public class Cart {
     }
 
     public void visitPage() {
-        this.driver.get(url);
+        this.driver.get(cartURL);
     }
 
     public void visitCart() { this.driver.get(cartURL); }
@@ -75,9 +75,10 @@ public class Cart {
     }
 
 
-    public static void Login(WebDriver driver, String username, String password){
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(login)).click();
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(uname)).click();
+    public void Login(String username, String password){
+//        new WebDriverWait(driver, 2).until(ExpectedConditions.elementToBeClickable(login)).click();
+        login.click();
+        new WebDriverWait(this.driver, 1).until(ExpectedConditions.visibilityOf(uname)).click();
 
         uname.sendKeys(username);
         pword.click();
