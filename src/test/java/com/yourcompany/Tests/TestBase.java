@@ -98,6 +98,7 @@ public class TestBase  {
 //        capabilities.setCapability("screenResolution", "1920x1080");
 
         capabilities.setCapability("name", methodName);
+        capabilities.setCapability("tags", "tag1,tag2,tag3,tag4");
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);

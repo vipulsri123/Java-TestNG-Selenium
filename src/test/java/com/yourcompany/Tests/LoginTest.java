@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
 
 /**
- * Created by mehmetgerceker on 12/7/15.
+ * Created by llaskin on 11/28/17
  */
 
 public class LoginTest extends TestBase {
@@ -27,7 +27,7 @@ public class LoginTest extends TestBase {
     private String username = "llaskin";
     private String password = "password";
 
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyLoginSuccess(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
@@ -41,10 +41,10 @@ public class LoginTest extends TestBase {
         this.annotate("Logging in");
         page.Login(username, password);
 
-        //Assert(We Were Able To Login)
+        Assert.assertTrue(page.WelcomeExists(username), "Welcome message does not exist");
     }
 
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyLoginFailure(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
@@ -63,9 +63,8 @@ public class LoginTest extends TestBase {
         Assert.assertEquals(getAlertText(driver), "User does not exist.");
     }
 
-
     public String getAlertText(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.alertIsPresent());
         return driver.switchTo().alert().getText();
     }
@@ -73,7 +72,7 @@ public class LoginTest extends TestBase {
     boolean isAlertPresent(WebDriver driver){
         try
         {
-            WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert();
             return true;
@@ -83,4 +82,5 @@ public class LoginTest extends TestBase {
             return false;
         }   // catch
     }
+
 }

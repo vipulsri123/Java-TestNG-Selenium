@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
 
 /**
- * Created by mehmetgerceker on 12/7/15.
+ * Created by llaskin on 11/28/17
  */
 
 public class CategoriesTest extends TestBase {
@@ -21,7 +21,7 @@ public class CategoriesTest extends TestBase {
      *
      * @throws InvalidElementStateException
      */
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyCategoriesCount(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
@@ -36,7 +36,7 @@ public class CategoriesTest extends TestBase {
         Assert.assertEquals(page.getCategoriesCount(), 3);
     }
 
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyCategories(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 

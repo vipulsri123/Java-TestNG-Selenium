@@ -8,12 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
-public class DemoBlazePage {
-
-    @FindBy(css = ".col-lg-3 .list-group-item")
-    private List<WebElement> categories;
+public class HTCOnePage {
 
     @FindBy(css = "#login2")
     private WebElement login;
@@ -37,30 +32,22 @@ public class DemoBlazePage {
     private WebElement addToCart;
 
     public WebDriver driver;
-    public static String url = "http://www.demoblaze.com";
+    public static String url = "http://www.demoblaze.com/prod.html?idp_=7";
 
 
-    public static DemoBlazePage visitPage(WebDriver driver) {
-        DemoBlazePage page = new DemoBlazePage(driver);
+    public static HTCOnePage visitPage(WebDriver driver) {
+        HTCOnePage page = new HTCOnePage(driver);
         page.visitPage();
         return page;
     }
 
-    public DemoBlazePage(WebDriver driver) {
+    public HTCOnePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public void visitPage() {
         this.driver.get(url);
-    }
-
-    public int getCategoriesCount() {
-        return (categories.size() - 1);
-    }
-
-    public List<WebElement> getCategories() {
-        return categories;
     }
 
     public void selectItem(String linkText){
@@ -75,7 +62,6 @@ public class DemoBlazePage {
     public void Login(String username, String password){
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(login)).click();
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(uname)).click();
-
         uname.sendKeys(username);
         pword.click();
         pword.sendKeys(password);
