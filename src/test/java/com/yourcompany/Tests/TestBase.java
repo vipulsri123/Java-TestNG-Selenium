@@ -57,6 +57,8 @@ public class TestBase  {
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "latest", "OS X 10.10"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},
+                new Object[]{"chrome", "latest-1", "Windows 8.1"},
+                new Object[]{"firefox", "latest-1", "Windows 10"}
         };
     }
 
@@ -96,6 +98,7 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
 //        capabilities.setCapability("screenResolution", "1920x1080");
+        capabilities.setCapability("idleTimeout", 10);
 
         capabilities.setCapability("name", methodName);
         capabilities.setCapability("tags", "tag1,tag2,tag3,tag4");
