@@ -96,6 +96,7 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", methodName);
+        capabilities.setCapability("tags", "tag1, tag2, tag3");
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
