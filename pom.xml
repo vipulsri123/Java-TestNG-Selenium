@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.10</version>
+            <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -58,10 +58,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
+                <version>2.19.1</version>
                 <configuration>
-                	<parallel>classes</parallel>
-          			<threadCount>40</threadCount>
+                	<parallel>classesAndMethods</parallel>
+          			<threadCount>100</threadCount>
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
                 </configuration>
             </plugin>
