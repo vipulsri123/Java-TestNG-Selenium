@@ -60,8 +60,21 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                	<parallel>classesAndMethods</parallel>
-          			<threadCount>100</threadCount>
+
+
+
+          <properties>
+            <property>
+              <name>parallel</name>
+              <value>methods</value>
+            </property>
+            <property>
+              <name>dataproviderthreadcount</name>
+              <value>100</value>
+            </property>
+          </properties>
+
+
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
                 </configuration>
             </plugin>
